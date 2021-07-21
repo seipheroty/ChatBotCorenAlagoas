@@ -10,7 +10,7 @@ function start(client) {
     if ( message.isGroupMsg === false) {
     //Verifico qual o stage do usuario e se for stage 4 desativa a interação com o robo 
     const stage = getStage(message.from)
-    if (stage != 4) {
+    if (stage != 6) {
       // Enviar a mensagem que foi retornanda nos stages
       let resp = stages.step[stage].obj.execute(
         message.from,

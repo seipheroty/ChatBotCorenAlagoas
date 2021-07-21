@@ -1,9 +1,18 @@
-const frases = require("../frases/frases")
 const banco = require("../banco");
-function execute(user, msg) {
-  banco.db[user].stage = 4
-  setTimeout(function(){ banco.db[user].stage = 0}, 9000000); // Robo sera ativo apos 5 horas
-  return [ frases.Secretaria2  ];
-}
+const frases = require("../frases/frases")
 
+function execute(user, msg) {
+  if (msg == 1) {
+    banco.db[user].stage = 2;
+    return [frases.Menu];
+  }
+  else if (msg == 2) {
+    banco.db[user].stage = 0;
+    return [frases.Finalizarconversaaceitou];
+  }
+  else {
+    return [frases.Finalizarnaoentendeu,frases.Finalizarconversa];
+  }
+
+}
 exports.execute = execute;
